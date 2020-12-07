@@ -1,0 +1,57 @@
+<html>
+<head><title>Result Generation</title></head>
+<body>
+<form name="marksForm" action="actionpage_2.php" method="post">
+
+<h2> PGD107 Marks </h2>
+
+Roll: <input type="text" name="roll" /><br />
+Name: <input type="text" name="name" /><br />
+Attendance: <input type="text" name="attend" /><br />
+Class Test: <input type="text" name="class_test" /><br />
+Lab: <input type="text" name="lab" /><br />
+Quiz: <input type="text" name="quiz" /><br />
+Mid term: <input type="text" name="mid" /><br />
+Final: <input type="text" name="final" /><br />
+<input type="submit" value="OK" onclick="return checkMarks()"/>
+<!-- attend (5), class_test (10), quiz (5), mid (15), lab (15),
+final (50)-->
+</form>
+</body>
+
+<script>
+function checkMarks() {
+ var roll = parseFloat(document.forms["marksForm"]["roll"].value);
+ var name = parseFloat(document.forms["marksForm"]["name"].value);
+ var attend = parseFloat(document.forms["marksForm"]
+["attend"].value);
+ var ct = parseFloat(document.forms["marksForm"]
+["class_test"].value);
+ var lab = parseFloat(document.forms["marksForm"]["lab"].value);
+ var quiz = parseFloat(document.forms["marksForm"]["quiz"].value);
+ var mid = parseFloat(document.forms["marksForm"]["mid"].value);
+ var final = parseFloat(document.forms["marksForm"]["final"].value);
+
+ var alertMessage = "";
+ var confirm = true;
+
+ if (attend > 5 || attend < 0) {
+ alertMessage = "Attendance must be between 0 to 5 ";
+ alert(alertMessage);
+ confirm = false;
+ }
+ else if (ct > 15 || ct < 0){
+ alertMessage = "CT must be between 0 to 15 ";
+ alert(alertMessage);
+ confirm = false;
+ }
+ else if (final > 50 || ct < 0){
+ alertMessage = Final must be between 0 to 15 ";
+ alert(alertMessage);
+ confirm = false;
+ }
+
+ return confirm;
+}
+</script>
+</html>

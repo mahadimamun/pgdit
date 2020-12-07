@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sign Up</title>
+		<!--<link rel="stylesheet" type="text/css" href="E:\pgdit_2nd_semister\internetProgramming\project\css\style.css"></link>
+		<link rel="stylesheet" type="text/css" href="E:\pgdit_2nd_semister\internetProgramming\project\css\login-page-style.css"></link>-->
+		<style>
+			body {
+				background: #f1f6fa;
+				margin: 0;
+				padding: 0;
+			}
+			.container {
+				width: 65vw;
+				padding: 2em;
+				background: #fff;
+				border-radius: 0;
+				top: 5%;
+				left: 50%;
+				position: absolute;
+				transform: translate(-50%, 5%);
+				box-sizing: border-box;	
+			}
+			.form-group {
+				/*margin-bottom: 1em;*/
+				transition:all .3s;
+				transform: translateY(1.5em);
+				
+				padding: 0;
+				
+			}
+			.form-label {
+				font-size: 1em;
+				color: #000;
+				display: inline-block;
+				opacity: 1;
+				transform: translateY(-2.2em);
+				transform-origin: 0 0;
+				transition: all .3s;
+				padding: 5px;
+				position: relative;
+			}
+			.form-control {
+				box-shadow: none;				
+				width: 90%;	
+				border: none;
+				transition: all .5s;		
+				padding: 5px;
+				margin: 0px 10px;				
+			}
+			.form-control::placeholder {
+				color: transparent;
+			}
+			.form-control:focus {
+				box-shadow: none;
+				outline: none;				
+			}
+			.item-container {
+				border: 1px solid gray;
+				padding: 0px;
+				position: relative;
+				margin: 5px;
+			}
+			.form-control:focus + .form-label,
+			.form-control:not(:placeholder-shown) + .form-label {
+				transform: translateY(-3em) scale(.8);
+				color: #000;
+				font-weight: bold;
+				font-size: 1em;
+			}
+			.item-container:focus-within {
+				border: 1px solid blue;
+			}
+		.container form {			
+			display: flex;
+		}
+		.submit-button {
+			margin: 5px; 
+			background: blue; 
+			width: 100px; 
+			height: 40px; 
+			text-align: center;
+			float: left;
+		}
+		.exit-button {
+			margin: 5px; 
+			background: red; 
+			width: 100px; 
+			height: 40px; 
+			text-align: center;
+			float: right;"
+		}
+		.submit-button [type="submit"], .exit-button [type="submit"] {
+			 padding: 0; 
+			 margin: 0;
+			 color: #fff;
+			 border: none;
+			 background: transparent;
+			 outline: none;
+			 cursor: pointer;
+			 width: 100%;
+			 height: 100%;
+		}
+		.submit-button :hover, .exit-button :hover {
+			 color: #000;
+			 font-weight: bold;
+			 background: #46a545;
+		}
+		</style>
+		<script>
+			var loadFile = function(event) {
+				var image = document.getElementById('imageDisplay');
+				image.src = URL.createObjectURL(event.target.files[0]);
+			};
+			
+			function goLoginPage() {
+				window.close("signup.html");
+				var id = event.target.id;
+				if (id==="submit") window.open("login.html");
+				else window.open("home.html");
+			}
+		</script>
+		
+	</head>
+		<div id="container" class="container">
+			<form id="form" class="form" method="post" action="createUser.php">
+				<div style="width: 50%; margin: 5px; float: left;">
+					<h2>Personal Information</h2>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="text" class="form-control" id="fName" name="fName" placeholder="First Name">	
+							<label for="fName" class="form-label">First Name</label>						
+						</div>					
+					</div>
+					
+					<div class="item-container">
+						<div class="form-group">
+							<input type="text" class="form-control" id="lName" name="lName" placeholder="Last Name">	
+							<label for="lName" class="form-label">Last Name</label>						
+						</div>					
+					</div>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="text" class="form-control" id="faName" name="faName" placeholder="Father Name">	
+							<label for="faName" class="form-label">Father Name</label>						
+						</div>					
+					</div>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="text" class="form-control" id="moName" name="moName" placeholder="Mother Name">	
+							<label for="moName" class="form-label">Mather Name</label>						
+						</div>					
+					</div>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="textarea" class="form-control" id="preAddress" name="preAddress" placeholder="Present Address">	
+							<label for="preAddress" class="form-label">Present Address</label>						
+						</div>					
+					</div>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="text" class="form-control" id="address" name="address" placeholder="Permanent Address">	
+							<label for="address" class="form-label">Permanent Address</label>						
+						</div>					
+					</div>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="date" class="form-control" id="dob" name="dob" placeholder="Date of Birth">	
+							<label for="dob" class="form-label">Date of Birth</label>						
+						</div>					
+					</div>					
+					<div class="item-container">
+						<div class="form-group">
+							<select class="form-control" id="religion" name="religion" placeholder="Religion">
+								<option value = "" >Select Religion</option>
+								<option value = "Islam">Islam</option>
+								<option value = "Hindu">Hindu</option>
+								<option value = "Christian">Christian</option>
+								<option value = "Buddha">Buddha</option>
+								<option value = "Others">Others</option>
+							</select>
+							<label for="religion" class="form-label">Religion</label>						
+						</div>					
+					</div>
+					<div class="item-container">
+						<p style="padding: 0; margin: 5px;"><b>Sex</b></p>
+						<input type="radio" style="" name="gender" value="M" >
+						<label for="male" class="">Male</label>	
+						<input type="radio" class="" name="gender" value="F" >
+						<label for="female" class="">Female</label>	
+					</div>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="text" class="form-control" id="nid" name="nid" placeholder="NID">	
+							<label for="nid" class="form-label">National ID No.</label>						
+						</div>					
+					</div>
+
+					<div class="item-container">
+						<div class="form-group">
+							<input type="text" class="form-control" id="emailId" name="emailId" placeholder="Enter Mobile No.">	
+							<label for="emailId" class="form-label">Email ID</label>						
+						</div>					
+					</div>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter Mobile No.">	
+							<label for="mobile" class="form-label">Mobile No.</label>						
+						</div>					
+					</div>
+					
+				</div>
+				<div style="width: 50%; margin: 5px; height: auto; float: left; ">
+					<img id="imageDisplay" style="margin-left: 30%; text-align: center; border: 1px solid gray; width: 150px; height: 160px"></img>
+					<input type="file" id="upload" name="upload" style="margin-left: 30%; margin-top: 20px;" onchange="loadFile(event)"></input>
+					<h2>Academic Information</h2>
+					<div class="item-container">
+						<div class="form-group">
+							<select class="form-control" id="course" name="course" placeholder="Religion">
+								<option value="">Select Course</option>
+								<?php $connection = mysqli_connect('localhost','root','','pgdit');
+									$query = "select concat(course_name, '(',course_synonym,')') course,course_id id from course_list";
+									$result = mysqli_query($connection,$query);
+									while($row = mysqli_fetch_assoc($slno)) {
+										echo "<option value='". $row['course_id'] ."'>" . $row['course'] ."</option>" ;			
+									}
+								?>	
+							</select>
+							<label for="courseid" class="form-label">Course Name</label>						
+						</div>					
+					</div>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="text" class="form-control" id="batch" name="batch" placeholder="Enter batch">	
+							<label for="batch" class="form-label">Batch</label>						
+						</div>					
+					</div>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="text" class="form-control" id="roll" name="roll" placeholder="Enter Roll">	
+							<label for="roll" class="form-label">Roll No.</label>						
+						</div>					
+					</div>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="text" class="form-control" id="regNo" name="regNo" placeholder="Enter Reg">	
+							<label for="regNo" class="form-label">Registration No.</label>						
+						</div>					
+					</div>
+					<h2>Sign In related Information</h2>
+					<div class="item-container">
+						<div class="form-group">
+							<!--<input type="text" class="form-control" id="" placeholder="Enter user name">-->
+							<input type="text" class="form-control" id="userid" name="userid" placeholder="Enter Reg">	
+							<label for="userid" class="form-label">User Name</label>						
+						</div>					
+					</div>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">	
+							<label for="password" class="form-label">Password</label>						
+						</div>					
+					</div>
+					<div class="item-container">
+						<div class="form-group">
+							<input type="password" class="form-control" id="confirm" placeholder="Confirm Password">	
+							<label for="confirm" class="form-label">Confirm Password</label>						
+						</div>					
+					</div>
+					<div>
+						<div id="submitbtn" class="submit-button"><input type="submit" id="submit" value="Submit" ></input></div>
+						<div id="exitbtn" class="exit-button"><input type="submit" id="exit" value="Exit" ></input></div>
+					</div>
+					
+				</div>
+			</form>
+		</div>
+	<body>
+	</body>
+</html>

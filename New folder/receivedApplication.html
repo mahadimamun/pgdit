@@ -1,0 +1,124 @@
+<?php
+	// Initialize the session
+	session_start();
+	// Check if the user is logged in, if not then redirect him to login page
+	/*if(!isset($_SESSION["myusername"])){
+		header("location: home.php");
+		exit;
+	}*/
+?>
+<html>
+	<head>
+		<style>
+			body {
+				background: #f1f6fa;
+				margin: 0;
+				padding: 0;
+			}
+			.container {
+				width: 65vw;
+				padding: 2em;
+				background: #d7e8d4;
+				border-radius: 0;
+				top: 10%;
+				left: 50%;
+				position: relative;
+				transform: translate(-50%, 10%);
+				box-sizing: border-box;	
+				margin-bottom: 10px;
+			}
+			.container h1 {
+				margin: 5px;
+				padding: 5px;
+				text-align: center;
+			}
+			table, th, td {
+				border: 1px solid black;
+				border-collapse: collapse;				
+			}
+			th, td {
+				padding: 8px 15px;				
+			}
+			.modal {
+				display: none;
+				position: fixed;
+				z-index: 1;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+				background-color: #fff;
+				background-color: rgba(0,0,0,0.4)
+			}
+			.modal-content {
+				background-color: #fefefe;
+				margin: auto;
+				padding: 20px;
+				border: 1px solid #888;
+				width: 80%;
+			}
+			.close {
+				color: #aaaaaa;
+				float: right;
+				font-size: 25px;
+				font-weight: bold;
+			}
+			.close:hover, .close:focus {
+				color: #000;
+				text-decoration: none;
+				cursor: pointer;
+			}
+		</style>
+		<script>
+			var modal = document.getElementById("mymodal");
+			var btn = document.getElementById("displaybtn");
+			var span = document.getElementsByClassName("close")[0];
+			 function showModal() {
+				modal.style.display = "block";
+			}
+			span.onclick = function() {
+				modal.style.display = "none";
+			}
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="container" class="container">
+			<h1>Student List of applied for Testimonial</h3>
+			<?php
+				$servername = "localhost";
+				$username = "root";
+				$password = "";
+				$dbname = "pgdit";
+				$tbl_name="user_info"; // Table name 
+
+				// Create connection
+				$conn = mysqli_connect($servername, $username, $password, $dbname);
+				
+				$stmt = "SELECT first_name,last_name ,reg_no,academic_session ,course_synonym,apply_date from student_info s, course_list c, testimonial_info t where s.course_id = c.course_id and s.std_sl = t.std_sl";
+				$result = mysqli_query($conn, $stmt);
+				echo "<table style='width: 100%;'><tr><thead><th>Student Name</th><th>Course</th><th>Registration No.</th><th>Session</th><th>Apply Date</th><th></th>";
+				while($row = mysqli_fetch_assoc($result)) {
+					$name = $row['first_name'] . $row['last_name'] ;	
+					$regno = $row['reg_no'] ;
+					$session = $row['academic_session'] ;
+					$course = $row['course_synonym'] ;
+					$apdt = $row['apply_date'] ;
+					echo "<tr><td>" .$name."</td><td>" .$course."</td><td>" . $regno ."</td><td>" . $session ."</td><td>" . $apdt ."</td><td><input type='submit' id='displaybtn' value='Show Details' onclick='showModal()'></input></td>";
+				}
+				echo "</table>";
+			?>
+		</div>
+		<div><input type="submit" id="displaybtn" value="Show Modal" onclick="showModal()"></input></div>
+		<div id="mymodal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+			</div>
+		</div>
+	</body>
+</html>
